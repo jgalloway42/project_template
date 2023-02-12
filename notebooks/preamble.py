@@ -1,3 +1,4 @@
+# Generic Jupyter Notebook Imports and Setup
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
