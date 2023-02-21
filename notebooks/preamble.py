@@ -8,6 +8,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 plt.style.use('ggplot')
-plt.rcParams["figure.figsize"] = (5,10)
+plt.rcParams["figure.figsize"] = (15,5)
 pd.set_option('display.max_columns',50)
 np.set_printoptions(precision=3)
