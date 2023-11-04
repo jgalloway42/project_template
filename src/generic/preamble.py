@@ -18,6 +18,10 @@ root_dir = os.path.abspath(os.path.join(cwd, os.pardir))
 raw_data = os.path.join(root_dir,'data','raw')
 processed_data = os.path.join(root_dir,'data','processed')
 interim_data = os.path.join(root_dir,'data','interim')
+external_data = os.path.join(root_dir,'data','external')
+models_path = os.path.join(root_dir,'models')
+source_path = os.path.join(root_dir,'src')
+figures_path = os.path.join(root_dir,'reports','figures')
 
 def walk_directory(dir_to_walk):
     # print input files for dataset in raw data folder
