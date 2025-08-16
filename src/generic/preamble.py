@@ -6,6 +6,7 @@ import seaborn as sns
 import os
 import warnings
 import joblib
+import sys
 warnings.filterwarnings('ignore')
 
 plt.style.use('ggplot')
@@ -13,7 +14,7 @@ plt.rcParams["figure.figsize"] = (15,5)
 pd.set_option('display.max_columns',50)
 np.set_printoptions(precision=3)
 
-
+# Path definitions
 cwd = os.getcwd()
 root_dir = os.path.abspath(os.path.join(cwd, os.pardir))
 raw_data = os.path.join(root_dir,'data','raw')
@@ -24,14 +25,5 @@ models_path = os.path.join(root_dir,'models')
 source_path = os.path.join(root_dir,'src')
 figures_path = os.path.join(root_dir,'reports','figures')
 
-def walk_directory(dir_to_walk):
-    # print input files for dataset in raw data folder
-    files_dict = {}   
-    ignore = ['.gitkeep']
-    for dirname, _, filenames in os.walk(dir_to_walk):     
-        for filename in filenames:                      
-            if filename in ignore:                              
-                continue                      
-            files_dict[filename.split('.')[0]] = os.path.join(dirname, filename)         
-            print(filename.split('.')[0],files_dict[filename.split('.')[0]])
-    return files_dict
+# Make src imports easier
+sys.path.append(source_path)
