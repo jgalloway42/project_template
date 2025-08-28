@@ -43,7 +43,7 @@ conda activate "$ENV_NAME"
 
 # Setup environment
 echo "Setting up environment..."
-pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install ipykernel
 python -m ipykernel install --user --name="$ENV_NAME"
 
@@ -59,9 +59,19 @@ fi
 
 echo "Conda environment '$ENV_NAME' created and activated."
 
-# Update requirements.txt
-echo "Updating requirements.txt..."
-pip freeze > ../requirements.txt
+# Backup and optionally update requirements.txt
+echo "Would you like to update requirements.txt with all installed packages? (y/n)"
+read -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Backing up original requirements.txt..."
+    cp ../requirements.txt ../requirements.txt.backup
+    echo "Updating requirements.txt with all installed packages..."
+    pip freeze > ../requirements.txt
+    echo "Original requirements.txt backed up as requirements.txt.backup"
+else
+    echo "Keeping original requirements.txt unchanged."
+fi
 
 echo "Process Complete. Press any key to exit..."
 read -n 1 -s
