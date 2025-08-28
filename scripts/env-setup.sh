@@ -18,12 +18,12 @@ else
 fi
 
 # Create a data directory
-mkdir -p data
+mkdir -p ../data
 
 # Create data subdirectories
-mkdir -p data/raw
-mkdir -p data/processed
-mkdir -p data/interim
+mkdir -p ../data/raw
+mkdir -p ../data/processed
+mkdir -p ../data/interim
 
 # Check if conda is installed
 if ! command -v conda &> /dev/null; then
@@ -48,9 +48,9 @@ pip install ipykernel
 python -m ipykernel install --user --name="$ENV_NAME"
 
 # Install from requirements.txt if it exists
-if [ -f "requirements.txt" ]; then
+if [ -f "../requirements.txt" ]; then
     echo "Installing packages from requirements.txt..."
-    pip install -r requirements.txt
+    pip install -r ../requirements.txt
 else
     echo "No requirements.txt found, skipping package installation"
 fi
@@ -61,7 +61,7 @@ echo "Conda environment '$ENV_NAME' created and activated."
 
 # Update requirements.txt
 echo "Updating requirements.txt..."
-pip freeze > requirements.txt
+pip freeze > ../requirements.txt
 
 echo "Process Complete. Press any key to exit..."
 read -n 1 -s
